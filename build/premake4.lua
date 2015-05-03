@@ -1,7 +1,7 @@
 #!lua
 
 --
--- Centaurean Chronometer
+-- Centaurean CPUTime
 --
 -- Copyright (c) 2015, Guillaume Voirin
 -- All rights reserved.

@@ -31,7 +31,7 @@ cputime_chronometer_start(&chrono);
 // Do something
 double lap = cputime_chronometer_lap(&chrono);
 // Do something else
-double elapsed = cputime_chronometer_lap(&chrono);
+double elapsed = cputime_chronometer_stop(&chrono);
 
 // At any time, if needed, it's possible to get a timeval structure containing the total elapsed usermode time
 struct timeval current_total_usertime = cputime_get_current_total_usertime();

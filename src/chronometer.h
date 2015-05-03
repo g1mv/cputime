@@ -32,8 +32,8 @@
  * 3/05/15 17:05
  */
 
-#ifndef CHRONOMETER_H
-#define CHRONOMETER_H
+#ifndef CPUTIME_H
+#define CPUTIME_H
 
 #include "chronometer_api.h"
 
@@ -41,7 +41,7 @@
 #include <windows.h>
 #include <string.h>
 
-#define CHRONOMETER_WINDOWS_EXPORT  __declspec(dllexport)
+#define CPUTIME_WINDOWS_EXPORT  __declspec(dllexport)
 #define RUSAGE_SELF     0
 
 struct rusage {
@@ -64,6 +64,6 @@ struct rusage {
 };
 #endif
 
-#define CHRONOMETER_MICROSECONDS    1000000.0
+#define CPUTIME_MICROSECONDS    1000000.0
 
 #endif

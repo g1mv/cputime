@@ -34,12 +34,12 @@
 -- 3/05/15 17:10
 --
 
-solution "Chronometer"
+solution "CPUTime"
 	configurations { "Release" }
 	flags { "OptimizeSpeed", "NoFramePointer" }
 
-	project "chronometer-static"
-		targetname ("chronometer")
+	project "cputime-static"
+		targetname ("cputime")
 		kind "StaticLib"
 		language "C"
 		files {
@@ -47,8 +47,8 @@ solution "Chronometer"
 			"../src/*.c"
 		}
 
-	project "chronometer-shared"
-		targetname ("chronometer")
+	project "cputime-shared"
+		targetname ("cputime")
 		kind "SharedLib"
 		language "C"
 		files {

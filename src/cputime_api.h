@@ -32,64 +32,64 @@
  * 3/05/15 17:52
  */
 
-#ifndef CHRONOMETER_API_H
-#define CHRONOMETER_API_H
+#ifndef CPUTIME_API_H
+#define CPUTIME_API_H
 
 #if defined(_WIN64) || defined(_WIN32)
 #include <time.h>
 
-#define CHRONOMETER_WINDOWS_EXPORT  __declspec(dllexport)
+#define CPUTIME_WINDOWS_EXPORT  __declspec(dllexport)
 #else
 
 #include <sys/resource.h>
 
-#define CHRONOMETER_WINDOWS_EXPORT
+#define CPUTIME_WINDOWS_EXPORT
 #endif
 
 typedef enum {
-    CHRONOMETER_STATE_IDLE, CHRONOMETER_STATE_RUNNING
-} CHRONOMETER_STATE;
+    CPUTIME_CHRONOMETER_STATE_IDLE, CPUTIME_CHRONOMETER_STATE_RUNNING
+} CPUTIME_CHRONOMETER_STATE;
 
 typedef struct {
     struct timeval start;
     struct timeval lap;
     struct timeval stop;
-    CHRONOMETER_STATE state;
-} chronometer;
+    CPUTIME_CHRONOMETER_STATE state;
+} cputime_chronometer;
 
 /*
  * Get the current running task's total usertime
  *
  * @return a timeval structure containing the current running task's total usertime
  */
-CHRONOMETER_WINDOWS_EXPORT struct timeval chronometer_get_current_time();
+CPUTIME_WINDOWS_EXPORT struct timeval cputime_get_current_time();
 
 /*
  * Start a chronometer
  *
  * @param chronometer a usertime chronometer structure
  */
-CHRONOMETER_WINDOWS_EXPORT void chronometer_start(chronometer *chrono);
+CPUTIME_WINDOWS_EXPORT void cputime_chronometer_start(cputime_chronometer *chrono);
 
 /*
  * Get a lap time in seconds (time since the last start or lap function was used)
  *
  * @param chronometer a usertime chronometer structure
  */
-CHRONOMETER_WINDOWS_EXPORT double chronometer_lap(chronometer *chrono);
+CPUTIME_WINDOWS_EXPORT double cputime_chronometer_lap(cputime_chronometer *chrono);
 
 /*
  * Stop the chronometer, and get time since its start in seconds
  *
  * @param chronometer a usertime chronometer structure
  */
-CHRONOMETER_WINDOWS_EXPORT double chronometer_stop(chronometer *chrono);
+CPUTIME_WINDOWS_EXPORT double cputime_chronometer_stop(cputime_chronometer *chrono);
 
 /*
  * Return the current elapsed time since the chronometer's start
  *
  * @param chronometer a usertime chronometer structure
  */
-CHRONOMETER_WINDOWS_EXPORT double chronometer_elapsed(chronometer *chrono);
+CPUTIME_WINDOWS_EXPORT double cputime_chronometer_elapsed(cputime_chronometer *chrono);
 
 #endif

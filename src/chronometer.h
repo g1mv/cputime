@@ -35,7 +35,7 @@
 #ifndef CPUTIME_H
 #define CPUTIME_H
 
-#include "cputime_api.h"
+#include "cputime.h"
 
 #if defined(_WIN64) || defined(_WIN32)
 #include <windows.h>

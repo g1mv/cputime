@@ -67,7 +67,7 @@ double cputime_substract(struct timeval stop, struct timeval start) {
     return (cputime_timeval_to_time(stop) - cputime_timeval_to_time(start)) / CPUTIME_MICROSECONDS;
 }
 
-CPUTIME_WINDOWS_EXPORT struct timeval cputime_get_current_usertime() {
+CPUTIME_WINDOWS_EXPORT struct timeval cputime_get_current_total_usertime() {
     struct rusage usage;
     getrusage(RUSAGE_SELF, &usage);
     return usage.ru_utime;
@@ -75,13 +75,13 @@ CPUTIME_WINDOWS_EXPORT struct timeval cputime_get_current_usertime() {
 
 CPUTIME_WINDOWS_EXPORT void cputime_chronometer_start(cputime_chronometer *chrono) {
     chrono->state = CPUTIME_CHRONOMETER_STATE_RUNNING;
-    chrono->start = cputime_get_current_usertime();
+    chrono->start = cputime_get_current_total_usertime();
     chrono->lap = chrono->start;
 }
 
 CPUTIME_WINDOWS_EXPORT double cputime_chronometer_lap(cputime_chronometer *chrono) {
     if (chrono->state == CPUTIME_CHRONOMETER_STATE_RUNNING) {
-        struct timeval new_lap = cputime_get_current_usertime();
+        struct timeval new_lap = cputime_get_current_total_usertime();
         double elapsed = cputime_substract(new_lap, chrono->lap);
         chrono->lap = new_lap;
         return elapsed;
@@ -91,7 +91,7 @@ CPUTIME_WINDOWS_EXPORT double cputime_chronometer_lap(cputime_chronometer *chron
 
 CPUTIME_WINDOWS_EXPORT double cputime_chronometer_stop(cputime_chronometer *chrono) {
     if (chrono->state == CPUTIME_CHRONOMETER_STATE_RUNNING) {
-        chrono->stop = cputime_get_current_usertime();
+        chrono->stop = cputime_get_current_total_usertime();
         chrono->state = CPUTIME_CHRONOMETER_STATE_IDLE;
         return cputime_substract(chrono->stop, chrono->start);
     } else
@@ -100,7 +100,7 @@ CPUTIME_WINDOWS_EXPORT double cputime_chronometer_stop(cputime_chronometer *chro
 
 CPUTIME_WINDOWS_EXPORT double cputime_chronometer_elapsed(cputime_chronometer *chrono) {
     if (chrono->state == CPUTIME_CHRONOMETER_STATE_RUNNING)
-        return cputime_substract(cputime_get_current_usertime(), chrono->start);
+        return cputime_substract(cputime_get_current_total_usertime(), chrono->start);
     else
         return 0.0;
 }

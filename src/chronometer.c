@@ -64,43 +64,43 @@ double cputime_timeval_to_time(struct timeval tv) {
 }
 
 double cputime_substract(struct timeval stop, struct timeval start) {
-    return (chronometer_timeval_to_time(stop) - chronometer_timeval_to_time(start)) / CPUTIME_MICROSECONDS;
+    return (cputime_timeval_to_time(stop) - cputime_timeval_to_time(start)) / CPUTIME_MICROSECONDS;
 }
 
-CPUTIME_WINDOWS_EXPORT struct timeval cputime_get_current_time() {
+CPUTIME_WINDOWS_EXPORT struct timeval cputime_get_current_usertime() {
     struct rusage usage;
     getrusage(RUSAGE_SELF, &usage);
     return usage.ru_utime;
 }
 
-CPUTIME_WINDOWS_EXPORT void cputime_chronometer_start(chronometer *chrono) {
+CPUTIME_WINDOWS_EXPORT void cputime_chronometer_start(cputime_chronometer *chrono) {
     chrono->state = CPUTIME_CHRONOMETER_STATE_RUNNING;
-    chrono->start = chronometer_get_current_time();
+    chrono->start = cputime_get_current_usertime();
     chrono->lap = chrono->start;
 }
 
-CPUTIME_WINDOWS_EXPORT double cputime_chronometer_lap(chronometer *chrono) {
+CPUTIME_WINDOWS_EXPORT double cputime_chronometer_lap(cputime_chronometer *chrono) {
     if (chrono->state == CPUTIME_CHRONOMETER_STATE_RUNNING) {
-        struct timeval new_lap = chronometer_get_current_time();
-        double elapsed = chronometer_substract(new_lap, chrono->lap);
+        struct timeval new_lap = cputime_get_current_usertime();
+        double elapsed = cputime_substract(new_lap, chrono->lap);
         chrono->lap = new_lap;
         return elapsed;
     } else
         return 0.0;
 }
 
-CPUTIME_WINDOWS_EXPORT double cputime_chronometer_stop(chronometer *chrono) {
+CPUTIME_WINDOWS_EXPORT double cputime_chronometer_stop(cputime_chronometer *chrono) {
     if (chrono->state == CPUTIME_CHRONOMETER_STATE_RUNNING) {
-        chrono->stop = chronometer_get_current_time();
-        chrono->state = CPUTIME_STATE_IDLE;
-        return chronometer_substract(chrono->stop, chrono->start);
+        chrono->stop = cputime_get_current_usertime();
+        chrono->state = CPUTIME_CHRONOMETER_STATE_IDLE;
+        return cputime_substract(chrono->stop, chrono->start);
     } else
         return 0.0;
 }
 
-CPUTIME_WINDOWS_EXPORT double cputime_chronometer_elapsed(chronometer *chrono) {
+CPUTIME_WINDOWS_EXPORT double cputime_chronometer_elapsed(cputime_chronometer *chrono) {
     if (chrono->state == CPUTIME_CHRONOMETER_STATE_RUNNING)
-        return chronometer_substract(chronometer_get_current_time(), chrono->start);
+        return cputime_substract(cputime_get_current_usertime(), chrono->start);
     else
         return 0.0;
 }

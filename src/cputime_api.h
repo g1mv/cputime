@@ -62,7 +62,7 @@ typedef struct {
  *
  * @return a timeval structure containing the current running task's total usertime
  */
-CPUTIME_WINDOWS_EXPORT struct timeval cputime_get_current_time();
+CPUTIME_WINDOWS_EXPORT struct timeval cputime_get_current_usertime();
 
 /*
  * Start a chronometer

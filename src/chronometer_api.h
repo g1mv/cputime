@@ -85,4 +85,11 @@ CHRONOMETER_WINDOWS_EXPORT double chronometer_lap(chronometer *chrono);
  */
 CHRONOMETER_WINDOWS_EXPORT double chronometer_stop(chronometer *chrono);
 
+/*
+ * Return the current elapsed time since the chronometer's start
+ *
+ * @param chronometer a usertime chronometer structure
+ */
+CHRONOMETER_WINDOWS_EXPORT double chronometer_elapsed(chronometer *chrono);
+
 #endif

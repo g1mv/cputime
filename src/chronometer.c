@@ -73,14 +73,14 @@ CHRONOMETER_WINDOWS_EXPORT struct timeval chronometer_get_current_time() {
     return usage.ru_utime;
 }
 
-CHRONOMETER_WINDOWS_EXPORT void chronometer_start(chronometer* chrono) {
+CHRONOMETER_WINDOWS_EXPORT void chronometer_start(chronometer *chrono) {
     chrono->state = CHRONOMETER_STATE_RUNNING;
     chrono->start = chronometer_get_current_time();
     chrono->lap = chrono->start;
 }
 
-CHRONOMETER_WINDOWS_EXPORT double chronometer_lap(chronometer* chrono) {
-    if(chrono->state == CHRONOMETER_STATE_RUNNING) {
+CHRONOMETER_WINDOWS_EXPORT double chronometer_lap(chronometer *chrono) {
+    if (chrono->state == CHRONOMETER_STATE_RUNNING) {
         struct timeval new_lap = chronometer_get_current_time();
         double elapsed = chronometer_substract(new_lap, chrono->lap);
         chrono->lap = new_lap;
@@ -89,11 +89,18 @@ CHRONOMETER_WINDOWS_EXPORT double chronometer_lap(chronometer* chrono) {
         return 0.0;
 }
 
-CHRONOMETER_WINDOWS_EXPORT double chronometer_stop(chronometer* chrono) {
-    if(chrono->state == CHRONOMETER_STATE_RUNNING) {
+CHRONOMETER_WINDOWS_EXPORT double chronometer_stop(chronometer *chrono) {
+    if (chrono->state == CHRONOMETER_STATE_RUNNING) {
         chrono->stop = chronometer_get_current_time();
         chrono->state = CHRONOMETER_STATE_IDLE;
         return chronometer_substract(chrono->stop, chrono->start);
     } else
+        return 0.0;
+}
+
+CHRONOMETER_WINDOWS_EXPORT double chronometer_elapsed(chronometer *chrono) {
+    if (chrono->state == CHRONOMETER_STATE_RUNNING)
+        return chronometer_substract(chronometer_get_current_time(), chrono->start);
+    else
         return 0.0;
 }

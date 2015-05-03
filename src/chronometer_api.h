@@ -57,12 +57,32 @@ typedef struct {
     CHRONOMETER_STATE state;
 } chronometer;
 
+/*
+ * Get the current running task's total usertime
+ *
+ * @return a timeval structure containing the current running task's total usertime
+ */
 CHRONOMETER_WINDOWS_EXPORT struct timeval chronometer_get_current_time();
 
-CHRONOMETER_WINDOWS_EXPORT void chronometer_start(chronometer *);
+/*
+ * Start a chronometer
+ *
+ * @param chronometer a usertime chronometer structure
+ */
+CHRONOMETER_WINDOWS_EXPORT void chronometer_start(chronometer *chrono);
 
-CHRONOMETER_WINDOWS_EXPORT double chronometer_lap(chronometer *);
+/*
+ * Get a lap time in seconds (time since the last start or lap function was used)
+ *
+ * @param chronometer a usertime chronometer structure
+ */
+CHRONOMETER_WINDOWS_EXPORT double chronometer_lap(chronometer *chrono);
 
-CHRONOMETER_WINDOWS_EXPORT double chronometer_stop(chronometer *);
+/*
+ * Stop the chronometer, and get time since its start in seconds
+ *
+ * @param chronometer a usertime chronometer structure
+ */
+CHRONOMETER_WINDOWS_EXPORT double chronometer_stop(chronometer *chrono);
 
 #endif

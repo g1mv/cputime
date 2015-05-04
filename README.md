@@ -12,14 +12,11 @@ To build a static and dynamic library of CPUTime on Windows, Linux or Mac OSX,
 
     cd build
     premake4 gmake
+    make
 
 or alternatively, on windows for example :
 
     premake4.exe vs2010
-    
-then :
-
-    make
 
 Quick start
 -----------

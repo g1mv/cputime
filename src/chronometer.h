@@ -38,7 +38,6 @@
 #include "cputime.h"
 
 #if defined(_WIN64) || defined(_WIN32)
-#define CPUTIME_WINDOWS_EXPORT  __declspec(dllexport)
 #define RUSAGE_SELF     0
 
 struct rusage {

@@ -36,6 +36,7 @@
 #define CPUTIME_API_H
 
 #if defined(_WIN64) || defined(_WIN32)
+#include <windows.h>
 #include <time.h>
 
 #define CPUTIME_WINDOWS_EXPORT  __declspec(dllexport)

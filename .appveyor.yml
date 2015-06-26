@@ -10,4 +10,4 @@ install:
 build_script:
   - cmd: premake5 vs2010
   - cmd: dir
-  - cmd: msbuild
+  - cmd: msbuild CPUTime.sln

@@ -35,7 +35,7 @@
 #ifndef CPUTIME_H
 #define CPUTIME_H
 
-#include "cputime.h"
+#include "cputime_api.h"
 
 #if defined(_WIN64) || defined(_WIN32)
 #define RUSAGE_SELF     0

@@ -9,7 +9,6 @@ install:
   - cmd: del premake5.zip
   
 build_script:
-  - cmd: cd build
   - cmd: premake5 gmake
   - cmd: make clean
   - cmd: make

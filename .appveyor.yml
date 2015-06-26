@@ -2,7 +2,7 @@ version: 1.0.{build}
  
 install:
   - cmd: cd build
-  - ps: https://github.com/premake/premake-core/releases/download/v5.0.0.alpha4/premake-5.0.0.alpha4-windows.zip
+  - ps: wget https://github.com/premake/premake-core/releases/download/v5.0.0.alpha4/premake-5.0.0.alpha4-windows.zip
   - cmd: echo "Unzipping premake5..."
   - cmd: 7z x premake-5.0.0.alpha4-windows.zip
   - cmd: premake5 --version

@@ -36,7 +36,7 @@
 
 solution "CPUTime"
 	configurations { "Release" }
-	flags { "OptimizeSpeed", "NoFramePointer" }
+	flags { "OptimizeSpeed", "NoFramePointer", "LinkTimeOptimization" }
 
 	project "cputime-static"
 		targetname ("cputime")

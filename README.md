@@ -21,7 +21,7 @@ or alternatively, on windows for example :
 Quick start
 -----------
 ```C
-#include "cputime.h"
+#include "cputime_api.h"
 
 cputime_chronometer chrono;
 cputime_chronometer_start(&chrono);

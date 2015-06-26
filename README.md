@@ -2,7 +2,7 @@ CPUTIME
 =======
 A simple multi-platform CPU user-mode chronometer
 
-Branch \ Platform | Linux | Windows
+Branch | Linux | Windows
 --- | --- | ---
 Master | [![Build status](https://travis-ci.org/centaurean/cputime.svg?branch=master)](https://travis-ci.org/centaurean/cputime.svg?branch=master) | [![Build status](https://ci.appveyor.com/api/projects/status/vfuxoenyd0y9iidx/branch/master?svg=true)](https://ci.appveyor.com/project/gpnuma/cputime/branch/master)
 

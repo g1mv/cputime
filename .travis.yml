@@ -2,20 +2,8 @@ language: c
 matrix:
   fast_finish: true
   include:
-    # OS X Mavericks
     - os: osx
-      env: CC_COMPILER=clang
-
-    # Container-based Ubuntu 12.04 LTS Server Edition 64 bit (doesn't support 32-bit includes)
     - os: linux
-      sudo: false
-      env: CC_COMPILER=gcc
-
-    - os: linux
-      sudo: false
-      env: CC_COMPILER=clang
-
-    # Ubuntu 14.04 LTS Server Edition 64 bit
     - dist: trusty
       sudo: required
       addons:
@@ -25,7 +13,6 @@ matrix:
             - qemu-user-static
             - gcc-aarch64-linux-gnu
             - g++-aarch64-linux-gnu
-      env: CC_COMPILER=aarch64-linux-gnu-gcc
 
     - dist: trusty
       sudo: required
@@ -36,7 +23,6 @@ matrix:
             - qemu-user-static
             - gcc-arm-linux-gnueabi
             - g++-arm-linux-gnueabi
-      env: CC_COMPILER=arm-linux-gnueabi-gcc
 
     - dist: trusty
       sudo: required
@@ -47,11 +33,9 @@ matrix:
             - qemu-user-static
             - gcc-powerpc-linux-gnu
             - g++-powerpc-linux-gnu
-      env: CC_COMPILER=powerpc-linux-gnu-gcc
 
     - dist: trusty
       sudo: required
-      env: CC_COMPILER=gcc
 
     - dist: trusty
       sudo: required
@@ -61,7 +45,6 @@ matrix:
             - ubuntu-toolchain-r-test
           packages:
             - g++-4.9
-      env: CC_COMPILER=gcc-4.9
 
     - dist: trusty
       sudo: required
@@ -71,7 +54,6 @@ matrix:
             - ubuntu-toolchain-r-test
           packages:
             - g++-5
-      env: CC_COMPILER=gcc-5
 
     - dist: trusty
       sudo: required
@@ -81,7 +63,6 @@ matrix:
             - ubuntu-toolchain-r-test
           packages:
             - g++-6
-      env: CC_COMPILER=gcc-6
 
     - dist: trusty
       sudo: required
@@ -92,7 +73,6 @@ matrix:
             - llvm-toolchain-trusty-3.5
           packages:
             - clang-3.5
-      env: CC_COMPILER=clang-3.5
 
     - dist: trusty
       sudo: required
@@ -103,7 +83,6 @@ matrix:
             - llvm-toolchain-trusty-3.6
           packages:
             - clang-3.6
-      env: CC_COMPILER=clang-3.6
 
     - dist: trusty
       sudo: required
@@ -114,7 +93,6 @@ matrix:
             - llvm-toolchain-trusty-3.8
           packages:
             - clang-3.8
-      env: CC_COMPILER=clang-3.8
 
     - dist: trusty
       sudo: required
@@ -125,7 +103,6 @@ matrix:
             - llvm-toolchain-trusty-3.9
           packages:
             - clang-3.9
-      env: CC_COMPILER=clang-3.9
 
     - dist: trusty
       sudo: required
@@ -136,7 +113,6 @@ matrix:
             - llvm-toolchain-trusty-4.0
           packages:
             - clang-4.0
-      env: CC_COMPILER=clang-4.0
 
 before_install:
   - cd build
@@ -145,6 +121,5 @@ before_install:
 
 script:
   - tar zxvf premake.tar.gz
-  - $CC_COMPILER -v
   - ./premake5 gmake
-  - make CC=$CC_COMPILER
+  - make

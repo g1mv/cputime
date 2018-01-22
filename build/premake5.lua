@@ -34,6 +34,26 @@
 -- 3/05/15 17:10
 --
 
+newoption {
+	trigger = "toolset",
+	value = "Toolset",
+	description = "Choose a custom toolset",
+	allowed = {
+	  { "clang", "Clang" },
+	  { "gcc", "GCC" },
+	}
+}
+
+if _OPTIONS["toolset"] == "clang" then
+	toolset "clang"
+	io.write("Using Clang toolset\n")
+end
+
+if _OPTIONS["toolset"] == "gcc" then
+	toolset "gcc"
+	io.write("Using GCC toolset\n")
+end
+
 solution "CPUTime"
 	configurations { "Release" }
 	flags { "NoFramePointer", "LinkTimeOptimization" }

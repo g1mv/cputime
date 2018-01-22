@@ -2,8 +2,20 @@ language: c
 matrix:
   fast_finish: true
   include:
+    # OS X Mavericks
     - os: osx
+      env: CC_COMPILER=clang
+
+    # Container-based Ubuntu 12.04 LTS Server Edition 64 bit (doesn't support 32-bit includes)
     - os: linux
+      sudo: false
+      env: CC_COMPILER=gcc
+
+    - os: linux
+      sudo: false
+      env: CC_COMPILER=clang TOOLSET=clang
+
+    # Ubuntu 14.04 LTS Server Edition 64 bit
     - dist: trusty
       sudo: required
       addons:
@@ -13,6 +25,7 @@ matrix:
             - qemu-user-static
             - gcc-aarch64-linux-gnu
             - g++-aarch64-linux-gnu
+      env: QEMU_INTERPRETER=qemu-aarch64-static CC_COMPILER=aarch64-linux-gnu-gcc TOOLSET=gcc
 
     - dist: trusty
       sudo: required
@@ -23,6 +36,7 @@ matrix:
             - qemu-user-static
             - gcc-arm-linux-gnueabi
             - g++-arm-linux-gnueabi
+      env: QEMU_INTERPRETER=qemu-arm-static CC_COMPILER=arm-linux-gnueabi-gcc TOOLSET=gcc
 
     - dist: trusty
       sudo: required
@@ -33,9 +47,22 @@ matrix:
             - qemu-user-static
             - gcc-powerpc-linux-gnu
             - g++-powerpc-linux-gnu
+      env: QEMU_INTERPRETER=qemu-ppc64-static CC_COMPILER=powerpc-linux-gnu-gcc TOOLSET=gcc
 
     - dist: trusty
       sudo: required
+      addons:
+        apt:
+          packages:
+            - qemu-system-ppc
+            - qemu-user-static
+            - gcc-powerpc-linux-gnu
+            - g++-powerpc-linux-gnu
+      env: QEMU_INTERPRETER=qemu-ppc-static CC_COMPILER=powerpc-linux-gnu-gcc TOOLSET=gcc
+
+    - dist: trusty
+      sudo: required
+      env: CC_COMPILER=gcc TOOLSET=gcc
 
     - dist: trusty
       sudo: required
@@ -45,6 +72,7 @@ matrix:
             - ubuntu-toolchain-r-test
           packages:
             - g++-4.9
+      env: CC_COMPILER=gcc-4.9 TOOLSET=gcc
 
     - dist: trusty
       sudo: required
@@ -54,6 +82,7 @@ matrix:
             - ubuntu-toolchain-r-test
           packages:
             - g++-5
+      env: CC_COMPILER=gcc-5 TOOLSET=gcc
 
     - dist: trusty
       sudo: required
@@ -63,6 +92,7 @@ matrix:
             - ubuntu-toolchain-r-test
           packages:
             - g++-6
+      env: CC_COMPILER=gcc-6 TOOLSET=gcc
 
     - dist: trusty
       sudo: required
@@ -73,6 +103,7 @@ matrix:
             - llvm-toolchain-trusty-3.5
           packages:
             - clang-3.5
+      env: CC_COMPILER=clang-3.5 TOOLSET=clang
 
     - dist: trusty
       sudo: required
@@ -83,6 +114,7 @@ matrix:
             - llvm-toolchain-trusty-3.6
           packages:
             - clang-3.6
+      env: CC_COMPILER=clang-3.6 TOOLSET=clang
 
     - dist: trusty
       sudo: required
@@ -93,6 +125,7 @@ matrix:
             - llvm-toolchain-trusty-3.8
           packages:
             - clang-3.8
+      env: CC_COMPILER=clang-3.8 TOOLSET=clang
 
     - dist: trusty
       sudo: required
@@ -103,6 +136,7 @@ matrix:
             - llvm-toolchain-trusty-3.9
           packages:
             - clang-3.9
+      env: CC_COMPILER=clang-3.9 TOOLSET=clang
 
     - dist: trusty
       sudo: required
@@ -113,6 +147,7 @@ matrix:
             - llvm-toolchain-trusty-4.0
           packages:
             - clang-4.0
+      env: CC_COMPILER=clang-4.0 TOOLSET=clang
 
 before_install:
   - cd build
@@ -121,5 +156,5 @@ before_install:
 
 script:
   - tar zxvf premake.tar.gz
-  - ./premake5 gmake
-  - make
+  - ./premake5 gmake --toolset=$TOOLSET
+  - make CC=$CC_COMPILER

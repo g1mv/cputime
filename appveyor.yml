@@ -7,5 +7,5 @@ install:
   - cmd: del premake5.zip
 
 build_script:
-  - cmd: premake5 vs2017
+  - cmd: premake5 vs2015
   - cmd: msbuild CPUTime.sln

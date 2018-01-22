@@ -4,16 +4,16 @@ matrix:
   include:
     # OS X Mavericks
     - os: osx
-      env: CC_COMPILER=clang CXX_COMPILER=clang++
+      env: CC_COMPILER=clang
 
     # Container-based Ubuntu 12.04 LTS Server Edition 64 bit (doesn't support 32-bit includes)
     - os: linux
       sudo: false
-      env: CC_COMPILER=gcc CXX_COMPILER=g++
+      env: CC_COMPILER=gcc
 
     - os: linux
       sudo: false
-      env: CC_COMPILER=clang CXX_COMPILER=clang++
+      env: CC_COMPILER=clang
 
     # Ubuntu 14.04 LTS Server Edition 64 bit
     - dist: trusty

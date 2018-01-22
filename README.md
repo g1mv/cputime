@@ -2,9 +2,10 @@ CPUTIME
 =======
 A simple multi-platform CPU user-mode chronometer
 
-Branch | Linux | Windows
---- | --- | ---
-Master | [![Build Status](https://travis-ci.org/centaurean/cputime.svg?branch=master)](https://travis-ci.org/centaurean/cputime) | [![Build status](https://ci.appveyor.com/api/projects/status/vfuxoenyd0y9iidx/branch/master?svg=true)](https://ci.appveyor.com/project/gpnuma/cputime/branch/master)
+Branch|Linux & OSX|Windows
+---|---|---
+master|[![Build Status](https://travis-ci.org/centaurean/cputime.svg?branch=master)](https://travis-ci.org/centaurean/cputime)|[![Build status](https://ci.appveyor.com/api/projects/status/vfuxoenyd0y9iidx/branch/master?svg=true)](https://ci.appveyor.com/project/gpnuma/cputime/branch/master)
+dev|[![Build Status](https://travis-ci.org/centaurean/cputime.svg?branch=dev)](https://travis-ci.org/centaurean/cputime)|[![Build status](https://ci.appveyor.com/api/projects/status/vfuxoenyd0y9iidx/branch/dev?svg=true)](https://ci.appveyor.com/project/gpnuma/cputime/branch/dev)
 
 Build
 -----
@@ -14,13 +15,21 @@ To build a static and dynamic library of CPUTime on Windows, Linux or Mac OSX,
 
 2) Run the following from the command line
 
-    cd build
+```
+    git clone https://github.com/centaurean/cputime.git
+    cd cputime/build
     premake5 gmake
     make
+```
 
-or alternatively, on windows for example :
+or alternatively, on Windows for example :
 
-    premake5.exe vs2010
+```
+    premake5.exe vs2017
+    msbuild CPUTime.sln
+```
+
+If msbuild.exe is not available in your path, just launch Visual Studio by double clicking on CPUTime.sln and build the library inside the IDE.
 
 Quick start
 -----------
@@ -36,3 +45,4 @@ double elapsed = cputime_chronometer_stop(&chrono);
 
 // At any time, if needed, it's possible to get a timeval structure containing the total elapsed usermode time
 struct timeval current_total_usertime = cputime_get_current_total_usertime();
+```

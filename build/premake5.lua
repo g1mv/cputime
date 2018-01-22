@@ -40,9 +40,6 @@ solution "CPUTime"
 	optimize "Speed"
 	cdialect "C99"
 	warnings "Extra"
-	if os.is64bit() then
-			architecture "x64"
-	end
 
 	project "cputime-static"
 		targetname ("cputime")

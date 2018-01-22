@@ -40,7 +40,7 @@ void usage_to_timeval(FILETIME *ft, struct timeval *tv) {
     time.LowPart = ft->dwLowDateTime;
     time.HighPart = ft->dwHighDateTime;
 
-    tv->tv_sec = time.QuadPart / 10000000;
+    tv->tv_sec = (long)(time.QuadPart / 10000000);
     tv->tv_usec = (time.QuadPart % 10000000) / 10;
 }
 

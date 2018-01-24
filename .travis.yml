@@ -27,6 +27,7 @@ matrix:
             - qemu-system-arm
             - qemu-user-static
             - gcc-aarch64-linux-gnu
+            - g++-aarch64-linux-gnu
       env: C_COMPILER=aarch64-linux-gnu-gcc TOOLSET=gcc LTO=on ARCH=native
 
     - dist: trusty
@@ -37,6 +38,7 @@ matrix:
             - qemu-system-arm
             - qemu-user-static
             - gcc-arm-linux-gnueabi
+            - g++-arm-linux-gnueabi
       env: C_COMPILER=arm-linux-gnueabi-gcc TOOLSET=gcc LTO=on ARCH=native
 
     - dist: trusty

@@ -65,16 +65,13 @@ matrix:
 
     - dist: trusty
       sudo: required
-      env: C_COMPILER=gcc TOOLSET=gcc LTO=on ARCH=native
-
-    - dist: trusty
-      sudo: required
       addons:
         apt:
+          sources:
+            - ubuntu-toolchain-r-test
           packages:
-            - libc6-dev-i386
-            - g++-multilib
-      env: C_COMPILER=gcc TOOLSET=gcc LTO=on ARCH=x32
+            - gcc-4.8
+      env: C_COMPILER=gcc-4.8 TOOLSET=gcc LTO=on ARCH=native
 
     - dist: trusty
       sudo: required
@@ -83,7 +80,18 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-            - g++-4.9
+            - gcc-4.8
+            - gcc-4.8-multilib
+      env: C_COMPILER=gcc-4.8 TOOLSET=gcc LTO=on ARCH=x32
+
+    - dist: trusty
+      sudo: required
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - gcc-4.9
       env: C_COMPILER=gcc-4.9 TOOLSET=gcc LTO=on ARCH=native
 
     - dist: trusty
@@ -93,7 +101,18 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-            - g++-5
+            - gcc-4.9
+            - gcc-4.9-multilib
+      env: C_COMPILER=gcc-4.9 TOOLSET=gcc LTO=on ARCH=x32
+
+    - dist: trusty
+      sudo: required
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - gcc-5
       env: C_COMPILER=gcc-5 TOOLSET=gcc LTO=on ARCH=native
 
     - dist: trusty
@@ -103,9 +122,8 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-            - g++-5
-            - g++-5-multilib
-            - gcc-multilib
+            - gcc-5
+            - gcc-5-multilib
       env: C_COMPILER=gcc-5 TOOLSET=gcc LTO=on ARCH=x32
 
     - dist: trusty
@@ -115,7 +133,7 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-            - g++-6
+            - gcc-6
       env: C_COMPILER=gcc-6 TOOLSET=gcc LTO=on ARCH=native
 
     - dist: trusty
@@ -125,9 +143,8 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-            - g++-6
-            - g++-6-multilib
-            - gcc-multilib
+            - gcc-6
+            - gcc-6-multilib
       env: C_COMPILER=gcc-6 TOOLSET=gcc LTO=on ARCH=x32
 
     - dist: trusty
@@ -137,7 +154,7 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-            - g++-7
+            - gcc-7
       env: C_COMPILER=gcc-7 TOOLSET=gcc LTO=on
 
     - dist: trusty
@@ -147,9 +164,8 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-            - g++-7
-            - g++-7-multilib
-            - gcc-multilib
+            - gcc-7
+            - gcc-7-multilib
       env: C_COMPILER=gcc-7 TOOLSET=gcc LTO=on ARCH=x32
 
     - dist: trusty

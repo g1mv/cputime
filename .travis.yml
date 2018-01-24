@@ -133,6 +133,28 @@ matrix:
         apt:
           sources:
             - ubuntu-toolchain-r-test
+          packages:
+            - g++-7
+      env: C_COMPILER=gcc-7 TOOLSET=gcc LTO=on
+
+    - dist: trusty
+      sudo: required
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-7
+            - g++-7-multilib
+            - gcc-multilib
+      env: C_COMPILER=gcc-7 TOOLSET=gcc LTO=on ARCH=x32
+
+    - dist: trusty
+      sudo: required
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
             - llvm-toolchain-trusty-3.5
           packages:
             - clang-3.5
@@ -181,6 +203,17 @@ matrix:
           packages:
             - clang-4.0
       env: C_COMPILER=clang-4.0 TOOLSET=clang LTO=off ARCH=native
+
+    - dist: trusty
+      sudo: required
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-trusty-5.0
+          packages:
+            - clang-5.0
+      env: C_COMPILER=clang-5.0 TOOLSET=clang LTO=off ARCH=native
 
 before_install:
   - cd build

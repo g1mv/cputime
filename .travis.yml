@@ -6,6 +6,9 @@ matrix:
     - os: osx
       env: C_COMPILER=clang TOOLSET=clang LTO=on ARCH=native
 
+    - os: osx
+      env: C_COMPILER=gcc TOOLSET=gcc LTO=on ARCH=native
+
     # Container-based Ubuntu 12.04 LTS Server Edition 64 bit (doesn't support 32-bit includes)
     - os: linux
       sudo: false

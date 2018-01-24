@@ -28,7 +28,7 @@ matrix:
             - qemu-user-static
             - gcc-aarch64-linux-gnu
             - g++-aarch64-linux-gnu
-      env: C_COMPILER=aarch64-linux-gnu-gcc QEMU_INTERPRETER=qemu-aarch64-static TOOLSET=gcc LTO=on ARCH=native
+      env: C_COMPILER=aarch64-linux-gnu-gcc TOOLSET=gcc LTO=on ARCH=native
 
     - dist: trusty
       sudo: required
@@ -39,7 +39,7 @@ matrix:
             - qemu-user-static
             - gcc-arm-linux-gnueabi
             - g++-arm-linux-gnueabi
-      env: C_COMPILER=arm-linux-gnueabi-gcc QEMU_INTERPRETER=qemu-arm-static TOOLSET=gcc LTO=on ARCH=native
+      env: C_COMPILER=arm-linux-gnueabi-gcc TOOLSET=gcc LTO=on ARCH=native
 
     - dist: trusty
       sudo: required
@@ -50,7 +50,7 @@ matrix:
             - qemu-user-static
             - gcc-powerpc-linux-gnu
             - g++-powerpc-linux-gnu
-      env: C_COMPILER=powerpc-linux-gnu-gcc QEMU_INTERPRETER=qemu-ppc64-static TOOLSET=gcc LTO=on ARCH=x64
+      env: C_COMPILER=powerpc-linux-gnu-gcc TOOLSET=gcc LTO=on ARCH=x64
 
     - dist: trusty
       sudo: required
@@ -61,7 +61,7 @@ matrix:
             - qemu-user-static
             - gcc-powerpc-linux-gnu
             - g++-powerpc-linux-gnu
-      env: C_COMPILER=powerpc-linux-gnu-gcc QEMU_INTERPRETER=qemu-ppc-static TOOLSET=gcc LTO=on ARCH=native
+      env: C_COMPILER=powerpc-linux-gnu-gcc TOOLSET=gcc LTO=on ARCH=native
 
     - dist: trusty
       sudo: required

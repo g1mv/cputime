@@ -153,7 +153,7 @@ matrix:
             - ubuntu-toolchain-r-test
           packages:
             - gcc-7
-      env: C_COMPILER=gcc-7 TOOLSET=gcc LTO=on
+      env: C_COMPILER=gcc-7 TOOLSET=gcc LTO=on ARCH=native
 
     - dist: trusty
       sudo: required

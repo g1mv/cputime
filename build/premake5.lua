@@ -71,16 +71,13 @@ newoption {
 if _OPTIONS["toolset"] == "clang" then
 	toolset "clang"
 	io.write("Using Clang toolset\n")
-end
-if _OPTIONS["toolset"] == "gcc" then
+elseif _OPTIONS["toolset"] == "gcc" then
 	toolset "gcc"
 	io.write("Using GCC toolset\n")
-end
-if _OPTIONS["toolset"] == "msc" then
+elseif _OPTIONS["toolset"] == "msc" then
 	toolset "msc"
 	io.write("Using MSC toolset\n")
-end
-if _OPTIONS["toolset"] == "msc-llvm-vs2014" then
+elseif _OPTIONS["toolset"] == "msc-llvm-vs2014" then
 	toolset "msc-llvm-vs2014"
 	io.write("Using MSC/LLVM toolset\n")
 end
@@ -100,11 +97,9 @@ solution "CPUTime"
 	if _OPTIONS["arch"] then
 		if _OPTIONS["arch"] == "x32" then
 			architecture "x32"
-		end
-		if _OPTIONS["arch"] == "x64" then
+		elseif _OPTIONS["arch"] == "x64" then
 			architecture "x64"
-		end
-		if _OPTIONS["arch"] == "arm" then
+		elseif _OPTIONS["arch"] == "arm" then
 			architecture "ARM"
 		end
 		io.write("Using " .. _OPTIONS["arch"] .. " architecture\n")

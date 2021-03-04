@@ -4,8 +4,8 @@ A simple multi-platform CPU user-mode chronometer
 
 Branch|Linux & OSX|Windows
 ---|---|---
-master|[![Build Status](https://travis-ci.org/centaurean/cputime.svg?branch=master)](https://travis-ci.org/centaurean/cputime)|[![Build status](https://ci.appveyor.com/api/projects/status/vfuxoenyd0y9iidx/branch/master?svg=true)](https://ci.appveyor.com/project/gpnuma/cputime/branch/master)
-dev|[![Build Status](https://travis-ci.org/centaurean/cputime.svg?branch=dev)](https://travis-ci.org/centaurean/cputime)|[![Build status](https://ci.appveyor.com/api/projects/status/vfuxoenyd0y9iidx/branch/dev?svg=true)](https://ci.appveyor.com/project/gpnuma/cputime/branch/dev)
+master|[![Build Status](https://travis-ci.org/k0dai/cputime.svg?branch=master)](https://travis-ci.org/k0dai/cputime)|[![Build status](https://ci.appveyor.com/api/projects/status/vfuxoenyd0y9iidx/branch/master?svg=true)](https://ci.appveyor.com/project/gpnuma/cputime/branch/master)
+dev|[![Build Status](https://travis-ci.org/k0dai/cputime.svg?branch=dev)](https://travis-ci.org/k0dai/cputime)|[![Build status](https://ci.appveyor.com/api/projects/status/vfuxoenyd0y9iidx/branch/dev?svg=true)](https://ci.appveyor.com/project/gpnuma/cputime/branch/dev)
 
 Build
 -----
@@ -16,7 +16,7 @@ To build a static and dynamic library of CPUTime on Windows, Linux or Mac OSX,
 2) Run the following from the command line
 
 ```
-    git clone https://github.com/centaurean/cputime.git
+    git clone https://github.com/k0dai/cputime.git
     cd cputime/build
     premake5 gmake
     make
